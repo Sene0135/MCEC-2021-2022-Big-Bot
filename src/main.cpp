@@ -1,6 +1,6 @@
 #include "main.h"
 
-// hello
+
 
 void opcontrol() {
 
@@ -24,27 +24,32 @@ void opcontrol() {
 	 bottomright_mtr.move(left);
 	 right_mtr.move(right);
 
-	 if (master.get_digital(DIGITAL_Y)) {
+	 if (master.get_digital(DIGITAL_Y)) { // slows down robot
 
-		 int left = left/2;
-		 int right = right/2;
+		 int left = (power+turn)/2;
+		 int right = (power-turn)/2;
+		 left_mtr.move(left);
+		 bottomleft_mtr.move(right);
+		 bottomright_mtr.move(left);
+		 right_mtr.move(right);
 
 
 	 }
 
 
 		if (master.get_digital(DIGITAL_R1)) {
-			grabber.move_velocity(127);
-			conveyorbelt.move_velocity(127);
+			grabber.move(127);
+			conveyorbelt.move(127);
 
 
 		}
 		else if (master.get_digital(DIGITAL_R2)) {
-					grabber.move_velocity(-127);
-					conveyorbelt.move_velocity(0);
+					grabber.move(-127);
+					conveyorbelt.move(0);
 				}
 				else {
-					grabber.move_velocity(0);
+					grabber.move(0);
+					conveyorbelt.move(0);
 				}
 
 			//	pros::Motor motor3(3);
