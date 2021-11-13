@@ -1,16 +1,17 @@
 #include "main.h"
-
+#include "safe_motor.h"
+using namespace pros;
 
 
 void opcontrol() {
 
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::Motor left_mtr(1);
-	pros::Motor right_mtr(2);
-	pros::Motor bottomright_mtr(3);
-	pros::Motor bottomleft_mtr(4);
-	pros::Motor grabber(13);
-	pros::Motor conveyorbelt(8);
+	Safe_Motor left_mtr(1);
+	Safe_Motor right_mtr(2);
+	Safe_Motor bottomright_mtr(3);
+	Safe_Motor bottomleft_mtr(4);
+	Safe_Motor grabber(13);
+	Safe_Motor conveyorbelt(8);
 
 
 	while (true) {
@@ -24,7 +25,7 @@ void opcontrol() {
 	 bottomright_mtr.move(left);
 	 right_mtr.move(right);
 
-	 if (master.get_digital(DIGITAL_Y)) { // slows down robot
+	 if (master.get_digital(DIGITAL_L1)) { // slows down robot
 
 		 int left = (power+turn)/2;
 		 int right = (power-turn)/2;
