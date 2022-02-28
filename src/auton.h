@@ -20,8 +20,12 @@ Class created to oversee all of the functions/code for the autonomous period
 #define BOTTOM_LEFT 4
 #define MOTOR_BELT 13
 
-#define DISTANCE_PORT 'A'
+#define VISION_SENSOR 18
+#define EXAMPLE_SIG 1
+#define NUM_VISION_OBJECTS 1
 
+#define ULTRA_PING 'A'
+#define ULTRA_ECHO 'B'
 // directions the 2 motors powering the lifter move in
 #define LEFT_DIRECTION 0
 #define RIGHT_DIRECTION 1
@@ -37,10 +41,12 @@ public:
 Auton(); // default constructor
 
 //functions
-void test(pros::Controller); //test drive function
-void distance(pros::Controller); //Grab mogo at the start
-void rotate(pros::Controller);
-void motortest(pros::Controller);
+void test(); //test drive function
+void distance(); //Grab mogo at the start
+void rotate();
+void motortest();
+void visiontest();
+void ultrasonic();
 
 private:
 
@@ -52,6 +58,7 @@ pros::Motor* t_right;
 pros::Motor* b_left; //bottom left wheel
 pros::Motor* b_right;
 pros::Motor* belt;
+
 
 
 };
